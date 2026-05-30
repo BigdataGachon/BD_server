@@ -1,0 +1,9 @@
+.env
+.git/
+.idea/
+__pycache__/
+*.pyc
+*.pkl
+*.sql
+test_server.py
+inference.py

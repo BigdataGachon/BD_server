@@ -58,9 +58,15 @@ def _today() -> "date_type":
 # ── FastAPI 앱 ─────────────────────────────────────────────────────────────────
 app = FastAPI(title="AQSys API", version="1.0.0")
 
+ALLOW_ORIGINS = [
+    o.strip()
+    for o in os.getenv("CORS_ORIGINS", "http://localhost,http://localhost:3000,http://localhost:5500,http://127.0.0.1:5500").split(",")
+    if o.strip()
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOW_ORIGINS,
     allow_methods=["GET"],
     allow_headers=["*"],
 )
